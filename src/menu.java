@@ -30,17 +30,32 @@ public class menu
     {
         If(choice == 1)
         {
-            player.Move();
+            _player.Move(location _nextLocation);
         }
         else if(choice == 2)
         {
-            player.Search();
+            _player.Search();
         }
         else if(choice == 3)
         {
-            player.Attack();
+            _player.Attack();
         }
     }
 
+    public void DisplayConnectedLocations(location _CurrentLocation)
+    {
+        System.out.println("____________________________");
+        System.out.println("0: Go back to " + _CurrentLocation._locationName);
+        for (int i = 0; i < _CurrentLocation._connectedLocations.size(); i++)
+        {
+            System.out.println((i+1) + ": Go to " + _CurrentLocation._connectedLocations.get(i)._locationName);
+        }
+        System.out.println("____________________________");
+    }
 
+    public void move()
+    {
+        DisplayConnectedLocations();
+
+    }
 }
