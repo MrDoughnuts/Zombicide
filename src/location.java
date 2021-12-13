@@ -6,6 +6,8 @@ public class location
     public String _locationName;
     public int _walkers;
     public int _fatties;
+    public Boolean _hasPlayer;
+
     public location()
     {
 

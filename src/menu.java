@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class menu
 {
     player _player = new player();
@@ -30,7 +32,7 @@ public class menu
     {
         If(choice == 1)
         {
-            _player.Move(location _nextLocation);
+            _player.Move(_nextLocation);
         }
         else if(choice == 2)
         {
@@ -55,7 +57,8 @@ public class menu
 
     public void move()
     {
-        DisplayConnectedLocations();
+        DisplayConnectedLocations(_player._currentLocation);
+        Scanner jIn = new Scanner();
 
     }
 }

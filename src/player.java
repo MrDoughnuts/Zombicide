@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 
 public class player
 {
@@ -11,9 +12,15 @@ public class player
     public String[] _listOfWeapons = {"Frying Pan", "BaseBall Bat", "Fire Axe", "ChainSaw"};
     public location _currentLocation;
 
+    private String _name;
+    public int _Wounds = 0;
+    public int _actions;
+
     public player()
     {
-
+        System.out.println("what is your name?");
+        Scanner jIn = new Scanner(System.in);
+        _name = jIn.nextLine();
     }
 
     public String DisplayWeapon()
@@ -99,9 +106,9 @@ public class player
         return _random.nextInt(1,7);
     }
 
-    public void Move()
+    public void Move(location _nextLocation)
     {
-
+        _currentLocation = _nextLocation;
     }
 
     public void Search()
