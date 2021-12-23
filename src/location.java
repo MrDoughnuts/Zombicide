@@ -8,9 +8,17 @@ public class location
     public int _fatties;
     public Boolean _hasPlayer;
 
+    public int _BlockingEnemies;
+
     public location()
+    {
+        placeObjects();
+    }
+
+    private void placeObjects()
     {
 
     }
+
 
 }

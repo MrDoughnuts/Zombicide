@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class player
 {
 
-    public ArrayList<Integer> _weapon = new ArrayList<>();
-    public ArrayList<Integer> _item = new ArrayList<>();
+    public static ArrayList<Integer> _weapon = new ArrayList<>();
+    public static ArrayList<Integer> _item = new ArrayList<>();
 
     public String[] _listOfWeapons = {"Frying Pan", "BaseBall Bat", "Fire Axe", "ChainSaw"};
     public location _currentLocation;
@@ -15,6 +15,8 @@ public class player
     private String _name;
     public int _Wounds = 0;
     public int _actions;
+    public int _Armor = 0;
+
 
     public player()
     {
@@ -23,44 +25,6 @@ public class player
         _name = jIn.nextLine();
     }
 
-    public String DisplayWeapon()
-    {
-        for(int i = 0; i < 4; i++)
-        {
-            if(i == _weapon.get(0))
-            {
-                return _listOfWeapons[i];
-            }
-        }
-        return "";
-    }
-
-    public void SetWeapons(int __weapon)
-    {
-        ArrayList<ArrayList<Integer>> _weaponStats = new ArrayList<>();
-
-        ArrayList<Integer> _fryingPan = new ArrayList<>();
-        Collections.addAll(_fryingPan,1,6,1);
-
-        ArrayList<Integer> _baseballBat = new ArrayList<>();
-        Collections.addAll(_baseballBat,2,3,1);
-
-        ArrayList<Integer> _fireAxe = new ArrayList<>();
-        Collections.addAll(_fireAxe,1,4,2);
-
-        ArrayList<Integer> _chainSaw = new ArrayList<>();
-        Collections.addAll(_chainSaw,5,5,2);
-
-        Collections.addAll(_weaponStats,_fryingPan,_baseballBat,_fireAxe,_chainSaw);
-
-        for(int i = 0; i < _listOfWeapons.length; i++)
-        {
-            if(i == __weapon)
-            {
-                _weapon = _weaponStats.get(i);
-            }
-        }
-    }
 
     public void Attack()
     {

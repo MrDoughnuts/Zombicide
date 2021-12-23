@@ -23,14 +23,14 @@ public class menu
     public void DisplayInv()
     {
         System.out.println("____________________________");
-        System.out.println("Weapon: " + _player.DisplayWeapon());
+        System.out.println("Weapon: " + weapon.DisplayWeapon());
         System.out.println("Item: " + _player._item);
         System.out.println("____________________________");
     }
 
     public void PlayerChoice(int choice)
     {
-        If(choice == 1)
+        if(choice == 1)
         {
             _player.Move(_nextLocation);
         }
