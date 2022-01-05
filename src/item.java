@@ -2,11 +2,6 @@ import java.util.ArrayList;
 
 public class item
 {
-
-
-
-
-
     //item id, item action cost, item effect
     int[] _Medkit = {0,1,0};
     int[] _BodyArmor = {1,0,1};

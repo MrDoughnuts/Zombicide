@@ -10,6 +10,9 @@ public class location
 
     public int _BlockingEnemies;
 
+    public int[] _item;
+    public ArrayList<Integer> _weapon = new ArrayList<>();
+
     public location()
     {
         placeObjects();
@@ -17,7 +20,15 @@ public class location
 
     private void placeObjects()
     {
+        item _ItemList = new item();
+        if(_connectedLocations.size() == 2)
+        {
+            _item = _ItemList._ListOfItems[dice.RollDice(_ItemList._ListOfItems.length)];
+        }
+        else if (_connectedLocations.size() == 1)
+        {
 
+        }
     }
 
 

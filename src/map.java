@@ -11,7 +11,8 @@ public class map
 
     public map()
     {
-
+        GenerateLocations();
+        GenerateMap();
     }
 
     public void GenerateLocations()

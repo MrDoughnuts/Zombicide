@@ -5,7 +5,7 @@ public class menu
     player _player = new player();
     public menu()
     {
-
+        map _Map = new map(_player);
     }
 
     public void DisplayMenu()
