@@ -10,7 +10,7 @@ public class item
     int[] _AcidBomb = {4, 1, 4};
 
     int[][] _ListOfItems = {_Medkit,_BodyArmor,_EnergyDrink,_SmokeGrenade,_AcidBomb};
-
+    String[] _ListOfItemNames = {"medkit", "Body Armor", "Energy Drink", "Smoke Grenade", "Acid Bomb"};
 
     public item()
     {

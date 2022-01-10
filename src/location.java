@@ -11,7 +11,8 @@ public class location
     public int _BlockingEnemies;
 
     public int[] _item;
-    public ArrayList<Integer> _weapon = new ArrayList<>();
+    public ArrayList<Integer> _Weapon = new ArrayList();
+
 
     public location()
     {
@@ -27,9 +28,28 @@ public class location
         }
         else if (_connectedLocations.size() == 1)
         {
+            weapon _newWeapon = new weapon();
+            _Weapon = _newWeapon._weaponStats.get(dice.RollDice(_newWeapon._weaponStats.size()));
+        }
+        else
+        {
+            _Weapon.add(-1);
 
+            int[] _noItem = {-1,-1,-1};
+            _item = _noItem;
         }
     }
 
+    public void DisplaySearch()
+    {
+        weapon _placedWeapon = new weapon();
+        item _placedItem = new item();
+
+        System.out.println("____________________________");
+        System.out.println("Item: " + _placedItem._ListOfItemNames[_item[0]]);
+        System.out.println("Weapon: " + weapon._WeaponNames[_Weapon.get(0)]);
+        System.out.println("____________________________");
+
+    }
 
 }

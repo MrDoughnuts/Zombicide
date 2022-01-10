@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -77,6 +76,21 @@ public class player
 
     public void Search()
     {
+        _currentLocation.DisplaySearch();
+
+        System.out.println("____________________________");
+        if(_currentLocation._Weapon.get(0) >= 0)
+        {
+            System.out.println("Will you take the weapon? Y/N");
+            Scanner jIn = new Scanner(System.in);
+
+            
+
+        }
+        else if (_currentLocation._item[0] >= 0)
+        {
+
+        }
 
     }
 
