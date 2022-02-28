@@ -1,48 +1,36 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class weapon
 {
-    public static String[] _WeaponNames = {"Frying Pan", "Baseball Bat", "Fire Axe", "Chainsaw"};
+    public static ArrayList<String> _WeaponNames = new ArrayList<>(Arrays.asList(
+                                                        "Frying Pan","Baseball Bat", "Fire Axe", "ChainSaw" ));
 
-    ArrayList<ArrayList<Integer>> _weaponStats = new ArrayList<>();
+    public static ArrayList<Integer> _FryingPan  = new ArrayList<>(Arrays.asList(1,6,1));
+    public static ArrayList<Integer> _BaseballBat  = new ArrayList<>(Arrays.asList(2,3,1));
+    public static ArrayList<Integer> _FireAxe  = new ArrayList<>(Arrays.asList(1,4,2));
+    public static ArrayList<Integer> _Chainsaw  = new ArrayList<>(Arrays.asList(5,5,2));
 
-    ArrayList<Integer> _fryingPan = new ArrayList<>();
+    public static ArrayList<ArrayList<Integer>> _WeaponStats = new ArrayList<ArrayList<Integer>>(
+            Arrays.asList(_FryingPan,_BaseballBat,_FireAxe,_Chainsaw)
+    );
 
-    ArrayList<Integer> _baseballBat = new ArrayList<>();
+    public String _WeaponName;
+    public int _DiceRolls,_HitThreshold,_Dmg;
 
-    ArrayList<Integer> _fireAxe = new ArrayList<>();
-
-    ArrayList<Integer> _chainSaw = new ArrayList<>();
-
-
-    public weapon()
+    public weapon(String _weaponName, int _diceRolls, int _hitThreshold, int _dmg)
     {
-        Collections.addAll(_fryingPan,1,6,1);
-        Collections.addAll(_baseballBat,2,3,1);
-        Collections.addAll(_fireAxe,1,4,2);
-        Collections.addAll(_chainSaw,5,5,2);
-        Collections.addAll(_weaponStats,_fryingPan,_baseballBat,_fireAxe,_chainSaw);
-    }
-
-    public static String DisplayWeapon()
-    {
-        for(int i = 0; i < 4; i++)
-        {
-            if(i == player._weapon.get(0))
-            {
-                return _WeaponNames[i];
-            }
-        }
-        return "";
-    }
-
-    public void SetWeapons(int __weapon)
-    {
-
-        player._weapon = _weaponStats.get(__weapon);
+        this._WeaponName = _weaponName;
+        this._DiceRolls = _diceRolls;
+        this._HitThreshold = _hitThreshold;
+        this._Dmg = _dmg;
 
     }
 
 
+    public String toString()
+    {
+        return _WeaponName + " || dice rolls: " + _DiceRolls + " || hit thresh hold: " + _HitThreshold + " || dmg: " + _Dmg;
+    }
 }
