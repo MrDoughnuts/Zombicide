@@ -7,6 +7,8 @@ public class location
     public int _walkers;
     public int _fatties;
     public Boolean _hasPlayer;
+    public boolean _isHive = false;
+    public boolean _isExit = false;
 
     public int _BlockingEnemies;
 
@@ -69,4 +71,50 @@ public class location
         }
     }
 
+    public void EndTurn()
+    {
+        for(location l: _connectedLocations)//moves zombies towards the player if they are in a connected location
+        {
+            if(l._hasPlayer)
+            {
+                MoveZombies(l);
+            }
+        }
+
+        int _randomLocation = dice.RollDice(4); //randomly moves zombies if there is no connected locations with players
+        if(_randomLocation != 3)
+        {
+            MoveZombies(_connectedLocations.get(_randomLocation));
+        }
+
+        if(_isHive) //spawns zombies if this location is a hive
+        {
+            SpawnZombies();
+        }
+
+    }
+
+    public void MoveZombies(location _location)
+    {
+        _location._walkers = this._walkers;
+        _location._fatties = this._fatties;
+        this._walkers = 0;
+        this._fatties = 0;
+    }
+
+    public void SpawnZombies()
+    {
+        int _zombiesSpawned = dice.RollDice(6);
+        for(int i = 0; i <_zombiesSpawned; i++)
+        {
+            if(dice.RollDice(2) == 1)
+            {
+                this._fatties += 1;
+            }
+            else
+            {
+                this._walkers += 1;
+            }
+        }
+    }
 }

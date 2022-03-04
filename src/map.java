@@ -4,7 +4,7 @@ import java.util.Random;
 public class map
 {
     private location a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t;
-    private final location[] _locations = {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t};
+    public  location[] _locations = {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t};
     private final ArrayList<location> _Map = new ArrayList<>();
     private final String[] _locationName = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t"};
 
@@ -17,21 +17,21 @@ public class map
 
     public void GenerateLocations()
     {
-        for(location i : _locations)
+        for(int i = 0; i<_locations.length; i++)
         {
-            i = new location();
+            _locations[i] = new location();
         }
     }
 
     public void GenerateMap()
     {
-        for(int i = 0; i < _locations.length; i++)
+        for(int i = 0; i < _locations.length; i++) //adds locations to the map and gives it a name
         {
             _Map.add(_locations[i]);
             _locations[i]._locationName = _locationName[i];
         }
 
-        for (int i = 0; i < _Map.size(); i++)
+        for (int i = 0; i < _Map.size(); i++)  //connects the locations
         {
             Random randomLocation = new Random();
             int x = randomLocation.nextInt(20);
@@ -42,7 +42,7 @@ public class map
             }
         }
 
-        for( int i = 0; i < _Map.size(); i++)
+        for( int i = 0; i < _Map.size(); i++) //parses out locations with more than 3 connected locations
         {
             if(_Map.get(i)._connectedLocations.size() > 3)
             {
@@ -59,6 +59,16 @@ public class map
                 _Map.get(i)._connectedLocations.remove(_mostConnectedLocationIndex);
             }
         }
+
+        for(int i = 0; i<3; i++) //sets 3 hives
+        {
+            if(_locations[i]._connectedLocations.size() > 3 )
+            {
+                _locations[i]._isHive = true;
+            }
+        }
+
+        _locations[dice.RollDice(20)]._isExit = true; //sets one location at random to be the exit location
     }
 
 }

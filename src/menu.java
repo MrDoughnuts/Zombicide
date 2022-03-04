@@ -3,19 +3,28 @@ import java.util.Scanner;
 public class menu
 {
     player _player = new player();
+    map _Map;
     public menu()
     {
-        map _Map = new map();
+        _Map = new map();
 
         while(true)
         {
-            DisplayMenu();
-            int _choice = Jin.readInt();
-            PlayerChoice(_choice);
+            if(_player._actions > 0)
+            {
+                DisplayMenu();
+                int _choice = Jin.readInt();
+                PlayerChoice(_choice);
+            }
+            else
+            {
+                ZombiePhase();
+                _player._actions = 3;
+            }
         }
     }
 
-    public void DisplayMenu()
+    private void DisplayMenu()
     {
         DisplayInv();
 
@@ -23,11 +32,13 @@ public class menu
         System.out.println("1: move");
         System.out.println("2: search");
         System.out.println("3: attack");
+        System.out.println("4: use item");
+        System.out.println("5: end turn");
         System.out.println("____________________________");
 
     }
 
-    public void DisplayInv()
+    private void DisplayInv()
     {
         System.out.println("____________________________");
         System.out.println("Weapon: " + _player._weapon.toString());
@@ -37,7 +48,7 @@ public class menu
 
 
 
-    public void PlayerChoice(int choice)
+    private void PlayerChoice(int choice)
     {
         switch(choice)
         {
@@ -49,11 +60,14 @@ public class menu
             break;
             case 4: _player._UseItem();
             break;
+            case 5: ZombiePhase();
+                    _player._actions = 3;
+            break;
         }
 
     }
 
-    public void DisplayConnectedLocations(location _CurrentLocation)
+    private void DisplayConnectedLocations(location _CurrentLocation)
     {
         System.out.println("____________________________");
         System.out.println("0: Go back to " + _CurrentLocation._locationName);
@@ -64,7 +78,7 @@ public class menu
         System.out.println("____________________________");
     }
 
-    public void move()
+    private void move()
     {
         int _locationChoice;
         DisplayConnectedLocations(_player._currentLocation);
@@ -79,6 +93,19 @@ public class menu
         }
     }
 
+    private void ZombiePhase()
+    {
+        for(int i = 0; i < _player._currentLocation._walkers + _player._currentLocation._fatties; i++)
+        {
+            if(dice.RollDice(10) > 7)
+            {
+                _player._Wounds += 1;
+            }
+        }
 
-
+        for(location l: _Map._locations )
+        {
+            l.EndTurn();
+        }
+    }
 }

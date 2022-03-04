@@ -13,7 +13,7 @@ public class player
 
     private String _name;
     public int _Wounds = 0;
-    public int _actions;
+    public int _actions = 3;
     public int _Armor = 0;
 
 
