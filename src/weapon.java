@@ -28,9 +28,38 @@ public class weapon
 
     }
 
+    public weapon()
+    {
+        this._WeaponName = "";
+        this._DiceRolls = -1;
+        this._Dmg = -1;
+        this._HitThreshold = -1;
+
+    }
+
 
     public String toString()
     {
         return _WeaponName + " || dice rolls: " + _DiceRolls + " || hit thresh hold: " + _HitThreshold + " || dmg: " + _Dmg;
     }
+
+    public String  weaponFlavorText()
+    {
+        switch(_WeaponName)
+        {
+            case "Frying Pan":
+                return "a fine tool capable at attacking, defending, and also cooking";
+            case "Baseball Bat":
+                return "A perfect weapon for bashing a zombie's head in. shame it won't work on a fatty though.";
+            case "Fire Axe":
+                return "These zombies need some iron supplements, how bout you give them some.";
+            case "ChainSaw":
+                return "With the brand new Lawnmower 12.0, you can start mowing zombie heads clean off with no resistance";
+
+
+        }
+
+        return "";
+    }
+
 }

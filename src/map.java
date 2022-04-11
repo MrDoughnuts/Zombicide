@@ -6,7 +6,10 @@ public class map
     private location a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t;
     public  location[] _locations = {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t};
     private final ArrayList<location> _Map = new ArrayList<>();
-    private final String[] _locationName = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t"};
+    private final String[] _locationName = {"A High School","Hospital","Police Station","Cookie Factory","Hotel","Skate Park",
+                                            "Playground","Shooting Range","Mall","Grocery Store","Lamp Shop",
+                                            "GameStop","7-Eleven","McDonald's","Taco Bell","Bar","Stadium","Race track",
+                                            "Military base","KFC"};
 
 
     public map()
@@ -19,16 +22,16 @@ public class map
     {
         for(int i = 0; i<_locations.length; i++)
         {
-            _locations[i] = new location();
+            _locations[i] = new location(_locationName[i]);
+
         }
     }
 
     public void GenerateMap()
     {
-        for(int i = 0; i < _locations.length; i++) //adds locations to the map and gives it a name
+        for(int i = 0; i < _locations.length; i++) //adds locations to the map
         {
             _Map.add(_locations[i]);
-            _locations[i]._locationName = _locationName[i];
         }
 
         for (int i = 0; i < _Map.size(); i++)  //connects the locations
@@ -60,15 +63,41 @@ public class map
             }
         }
 
-        for(int i = 0; i<3; i++) //sets 3 hives
+        int i = 0;
+        do
         {
-            if(_locations[i]._connectedLocations.size() > 3 )
-            {
-                _locations[i]._isHive = true;
-            }
+            int x = dice.RollDice(20);
+                i++;
+                _locations[x]._isHive = true;
+        }while(i<3);
+
+
+        for(location l: _locations)
+        {
+            l.placeObjects();
         }
 
+    }
+
+    public void SetExit()
+    {
         _locations[dice.RollDice(20)]._isExit = true; //sets one location at random to be the exit location
+    }
+
+    public void SetSurvivor()
+    {
+        _locations[dice.RollDice(20)]._hasSurvivor = true; //sets one location at random to be the exit location
+
+    }
+
+    public void DisplayMap()
+    {
+        for(location l: _locations)
+        {
+            System.out.println(l._locationName + " walkers: " + l._walkers + " fatties: " + l._fatties + " is hive: "
+                            + l._isHive + " Has player: " + l._hasPlayer + " is exit: " + l._isExit +
+                            " weapon: " + l._Weapon._WeaponName +  " Item: " + l._item._ItemName);
+        }
     }
 
 }
